@@ -1,4 +1,4 @@
-import mindmapImg from "../../assets/mindmap.png";
+import mindmapImg from "../../assets/mindmapp.png";
 
 export const DetailedMindMap = () => {
   return (
