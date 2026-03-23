@@ -9,8 +9,10 @@ import { ApplicationsTab } from "@/components/iot/ApplicationsTab";
 import { DataManagementTab } from "@/components/iot/DataManagementTab";
 import { SecurityTab } from "@/components/iot/SecurityTab";
 import { EmergingTrendsTab } from "@/components/iot/EmergingTrendsTab";
+import { DetailedMindMap } from "@/components/iot/DetailedMindMap"; // ← ADD THIS
 
 const tabs = [
+  { id: "mindmap", label: "Mind Map" },
   { id: "overview", label: "Overview" },
   { id: "core", label: "Core Components" },
   { id: "communication", label: "Communication" },
@@ -32,6 +34,7 @@ const tabComponents: Record<TabId, React.FC> = {
   data: DataManagementTab,
   security: SecurityTab,
   trends: EmergingTrendsTab,
+  mindmap: DetailedMindMap, // ← ADD THIS
 };
 
 const Index = () => {
@@ -40,15 +43,16 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Ambient background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-iot-blue/[0.03] blur-[120px]" />
         <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-iot-purple/[0.03] blur-[120px]" />
       </div>
-
       <div className="relative z-10">
-        <TabNav tabs={tabs} activeTab={activeTab} onTabChange={(id) => setActiveTab(id as TabId)} />
-
+        <TabNav
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabChange={(id) => setActiveTab(id as TabId)}
+        />
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
